@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 	 	res.json(response)
 	 })
 	 .catch(err => {
-	 	res.status(400).json('error loading users')
+	 	res.status(400).json('error loading users', err)
 	 })
 });
 
