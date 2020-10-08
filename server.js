@@ -11,7 +11,7 @@ const register = require('./controllers/register');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'postgresql-rectangular-31486',
     user : 'postgres',
     password : 'olatunji',
     database : 'smartbrain'
