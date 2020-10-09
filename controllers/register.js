@@ -38,7 +38,10 @@ const handleRegister = (req, res, db, bcrypt) => {
 				return userExist();
 			}
 		})
-		.catch(err => res.status(400).json('unable to register, something went wrong!!!'));
+		.catch(err => {
+			console.log(err);
+			res.status(400).json('unable to register, something went wrong!!!', err)
+	    });
 		
 	}
 }
