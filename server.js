@@ -8,7 +8,6 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const register = require('./controllers/register');
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const db = knex({
   client: 'pg',
   connection: {
@@ -28,7 +27,7 @@ app.get('/', (req, res) => {
 	 	res.json(response)
 	 })
 	 .catch(err => {
-	 	res.status(400).json('error loading users')
+	 	res.status(400).json(err)
 	 })
 });
 
