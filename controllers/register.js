@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const handleRegister = (req, res, db, bcrypt) => {
 	const {name, email, password} = req.body;
 	const userExist = () => {
@@ -33,14 +31,14 @@ const handleRegister = (req, res, db, bcrypt) => {
 					 .then(trx.commit)
 					 .catch(trx.rollback)
 				})
-				  .catch(err => res.status(400).json('registration failed!'));
+				  .catch(err => res.status(400).json(err));
 			}else{
 				return userExist();
 			}
 		})
 		.catch(err => {
 			console.log(err);
-			res.status(400).json('unable to register, something went wrong!!!', err)
+			res.status(400).json(err)
 	    });
 		
 	}
