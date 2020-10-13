@@ -17,7 +17,7 @@
            }
         })
         .catch(err => {
-          res.status(400).json('invalid credentials')
+          res.status(400).json(err)
         })
         }
 }
