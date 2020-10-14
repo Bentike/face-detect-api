@@ -11,7 +11,7 @@
             .then(user => {
               res.json(user[0])
             })
-            .catch(err => {console.log('error')})
+            .catch(err => {res.status(400).json(err)})
            }else{
             res.status(400).json('invalid credentials')
            }

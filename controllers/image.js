@@ -1,4 +1,4 @@
-const clarifai = require('clarifai');
+const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({
   apiKey: '287e993ee6324555939d92804971da69'
@@ -22,7 +22,7 @@ const handleImage = (req, res, db) => {
 	.then(entries => {
 		res.json(entries[0])
 	})
-	 .catch(err => {console.log('error:')})
+	 .catch(err => res.status(400).json(err))
 }
 
 module.exports = {

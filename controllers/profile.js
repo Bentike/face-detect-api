@@ -9,7 +9,7 @@ const handleProfileGet = (req, res, db) => {
 	 	}
 	 })
 	  .catch(err => {
-	  	console.log('user not found');
+	  	res.status(400).json(err)
 	  })
 }
 

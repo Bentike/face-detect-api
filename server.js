@@ -22,39 +22,33 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-	res.json('Hello Bentike')
-	// db.select('*').from('users')
-	//  .then(response => {
-	//  	res.json(response)
-	//  })
-	//  .catch(err => {
-	//  	res.status(400).json(err)
-	//  })
+	db.select('*').from('users')
+	 .then(response => {
+	 	res.json(response)
+	 })
+	 .catch(err => {
+	 	res.status(400).json(err)
+	 })
 });
 
 app.post('/signin', (req, res) => {
-	res.json("Hello Bentike, Welcome to Signin")
-	// signin.handleSignin(req, res, db, bcrypt);
+	signin.handleSignin(req, res, db, bcrypt);
 });
 
 app.post('/register', (req, res) => {
-	res.json("Hello Bentike, Welcome to Register")
-	// register.handleRegister(req, res, db, bcrypt);
+	register.handleRegister(req, res, db, bcrypt);
 });
 
 app.get('/profile/:id', (req, res) => {
-	res.json("Hello Bentike, Welcome to Profile")
-	// profile.handleProfileGet(req, res, db);
+	profile.handleProfileGet(req, res, db);
 });
 
 app.put('/image', (req, res) => {
-	res.json("Hello Bentike, Welcome to Image")
-	// image.handleImage(req, res, db);
+	image.handleImage(req, res, db);
 });
 
 app.post('/imageurl', (req, res) => {
-	res.json("Hello Bentike, Welcome to ImageUrl")
-	// image.handleApiCall(req, res);
+	image.handleApiCall(req, res);
 });
 
 app.listen(process.env.PORT || 3000, () => {
