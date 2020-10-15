@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 	 	res.json(response)
 	 })
 	 .catch(err => {
-	 	res.status(400).json(err)
+	 	res.status(400).json('Failed to load users')
 	 })
 });
 
