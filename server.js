@@ -10,7 +10,7 @@ const register = require('./controllers/register');
 
 const db = knex({
   client: 'pg',
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.BASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
