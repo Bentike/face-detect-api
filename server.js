@@ -8,14 +8,24 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const register = require('./controllers/register');
 
+// const db = knex({
+//   client: 'pg',
+//   connectionString: process.env.DATABASE_URL,
+//   debug: true,
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
+
 const db = knex({
-  client: 'pg',
-  connectionString: process.env.DATABASE_URL,
-  debug: true,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+	client: 'pg',
+	connection: {
+	  host : '5432',
+	  user : 'ontvcrrrufpqba',
+	  password : 'fa65669b2e7e0e923eb633886f9dbf3341716b3227e0e7af70c25fb7e66e94d2',
+	  database : 'd6bc24i7jnvdmp'
+	}
+  });
 
 const app = express();
 
