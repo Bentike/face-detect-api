@@ -20,7 +20,7 @@ const register = require('./controllers/register');
 const db = knex({
 	client: 'pg',
 	connection: {
-	  host : '5432',
+	  host : 'ec2-50-17-197-184.compute-1.amazonaws.com',
 	  user : 'ontvcrrrufpqba',
 	  password : 'fa65669b2e7e0e923eb633886f9dbf3341716b3227e0e7af70c25fb7e66e94d2',
 	  database : 'd6bc24i7jnvdmp'
