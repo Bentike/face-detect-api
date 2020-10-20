@@ -17,7 +17,7 @@
            }
         })
         .catch(err => {
-          console.log(err)
+          res.status(400).json("Sign in failed")
         })
       }
 }
