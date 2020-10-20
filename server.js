@@ -8,7 +8,7 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const register = require('./controllers/register');
 const { Pool } = require('pg');
-const db = new Pool({
+const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: {
 		rejectUnauthorized: false
@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-	db.select('*').from('users')
+	pool.select('*').from('users')
 	 .then(response => {
 	 	res.json(response)
 	 })
@@ -39,19 +39,19 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signin', (req, res) => {
-	signin.handleSignin(req, res, db, bcrypt);
+	signin.handleSignin(req, res, pool, bcrypt);
 });
 
 app.post('/register', (req, res) => {
-	register.handleRegister(req, res, db, bcrypt);
+	register.handleRegister(req, res, pool, bcrypt);
 });
 
 app.get('/profile/:id', (req, res) => {
-	profile.handleProfileGet(req, res, db);
+	profile.handleProfileGet(req, res, pool);
 });
 
 app.put('/image', (req, res) => {
-	image.handleImage(req, res, db);
+	image.handleImage(req, res, pool);
 });
 
 app.post('/imageurl', (req, res) => {

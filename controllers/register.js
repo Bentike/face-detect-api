@@ -1,15 +1,15 @@
-const handleRegister = (req, res, db, bcrypt) => {
+const handleRegister = (req, res, pool, bcrypt) => {
 	const {name, email, password} = req.body;
 	const userExist = () => {
 		res.status(400).json('user already exist')
 	};
 	if(name.length && email.length && password.length > 0){
 		const hash = bcrypt.hashSync(password);
-		db.select('*').from('users')
+		pool.select('*').from('users')
 		.where('email', '=', email)
 		.then(response => {
 			if(!response[0]){
-				db.transaction(trx => {
+				pool.transaction(trx => {
 					trx.insert({
 						hash: hash,
 						email: email
