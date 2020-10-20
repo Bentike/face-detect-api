@@ -7,8 +7,8 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const register = require('./controllers/register');
-const { Db } = require('pg');
-const db = new Db({
+const { Pool } = require('pg');
+const db = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: {
 		rejectUnauthorized: false
